@@ -1,5 +1,5 @@
 {
-  "name": "FlickrDumpImoprt",
+  "name": "FlickrDumpImport",
   "version": "0.1",
   "devDependencies": {
     "grunt": "^0.4.5"
