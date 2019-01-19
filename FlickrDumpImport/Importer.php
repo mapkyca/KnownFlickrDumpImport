@@ -71,6 +71,97 @@ class Importer {
             }
         }        
     }
+    
+    private function findFile($id) {
+        if ($folders = scandir($this->getWorkingDirectory())) {
+            foreach ($folders as $file) {
+                if ($file != '.' && $file != '..') {
+                    if (strpos($file, $id)) {
+                        return $file;
+                    }
+                }
+            }
+        }
+        
+        return false;
+    }
+    
+    private function importMedia() {
+        
+        // For each photo json
+        if ($folders = scandir($this->getWorkingDirectory())) {
+            foreach ($folders as $file) {
+                if ($file != '.' && $file != '..') {
+         
+                    // Find file, and import
+                    if (preg_match('/photo_([0-9]+)\.json/', $file)) {
+                    
+                        $json = json_decode(file_get_contents($file), true);
+                        
+                        \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Importing photo %d from %s...', [$json['id'], $file]));
+        
+                        // Find file
+                        if ($file = $this->findFile($json['id'])) {
+            
+                            $ext = pathinfo($file, PATHINFO_EXTENSION);
+                            
+                            switch ($ext) {
+                            
+                                case 'gif': if (!$mime) $mime = 'image/gif';
+                                case 'png': if (!$mime) $mime = 'image/png';
+                                case 'jpeg':    
+                                case 'jpg' : 
+                                    if (!$mime) $mime = 'image/jpeg';
+                                    
+                                    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Importing %s as a photo', [$file]));
+        
+                                    $_FILES = [
+                                        'photo' => [
+                                            'tmp_name' => $file,
+                                            'name' => basename($json['original']),
+                                            'type' => $mime,
+                                        ]
+                                    ];
+                                    
+                                    $tags = [];
+                                    foreach ($json['tags'] as $tag) {
+                                        $tags[] = '#' . trim(str_replace(' ', '', $tag['tag']) , '"#\'');
+                                    }
+                                    
+                                    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('\tSetting title as %s', [$json['name']]));
+                                    \Idno\Core\Idno::site()->currentPage()->setInput('title', $json['name']);
+                               
+                                    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('\tSetting body as %s', [empty($tags) ? $json['description'] : $json['description'] . "\n\n" . implode(' ', $tags)]));
+                                    \Idno\Core\Idno::site()->currentPage()->setInput('body', empty($tags) ? $json['description'] : $json['description'] . "\n\n" . implode(' ', $tags));
+               
+                                    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('\tSetting created time to %s', [$json['date_taken']]));
+                                    \Idno\Core\Idno::site()->currentPage()->setInput('created', strtotime($json['date_taken']));
+                                    
+                                    
+                                    
+                                    break;
+                                
+                                case 'mp4' :
+                                    $mime = 'video/mp4';
+                                    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Importing %s as a video', [$file]));
+                                    break;
+                                
+                                default:
+                                    throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Extension %s is not supported for %s', [$ext, $file]));
+                            }
+                            
+                            
+                        } else {
+                            throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Could not find a file associated with %s', [$json['id']]));
+                        }
+                        
+                    }
+                    
+                }
+            }
+        }
+        
+    }
 
     public function doImport() {
         \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Starting import for %s on %s', [$user->getName(), date('r')]));
