@@ -220,9 +220,9 @@ class Importer {
             \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Logging %s on', [$user->getName()]));        
             \Idno\Core\Idno::site()->session()->logUserOn($this->user);
             
-            
-            
-            
+            // Import media
+	    $this->importMedia();
+           
             
         } catch (\Exception $ex) {
             \Idno\Core\Idno::site()->logging()->error($ex->getMessage());
