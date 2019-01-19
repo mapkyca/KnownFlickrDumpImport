@@ -72,6 +72,50 @@ class Importer {
         }        
     }
     
+    private function importAlbums() {
+	
+	$json = json_decode(file_get_contents($this->getWorkingDirectory() . 'albums.json'), true);
+	if ($json) {
+	    
+	    foreach ($json as $set) {
+		
+		// Create new storage
+		if ($photoset = \Idno\Entities\GenericDataItem::getByDatatype('Flickr/Photoset', ['photoset_id' => $set['id']])) {
+		    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Existing photoset %s - %s, updating...', [$set['id'], $set['title']]));
+
+		    $newset = $photoset[0];
+		} else {
+		    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Importing new photoset %s - %s, updating...', [$set['id'], $set['title']]));
+		    
+		    $newset = new \Idno\Entities\GenericDataItem();
+		    $newset->setDatatype('Flickr/Photoset');
+		}
+		
+		
+		// Remap certain fields, as they clash
+		$translate = [
+		    'id' => 'photoset_id',
+		    //'primary' => 'primary_photo_id',
+		];
+
+		foreach ($set as $key => $value) {
+
+		    if (isset($translate[$key]))
+			$key = $translate[$key];
+
+		    $newset->$key = $value;
+
+		    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('%s => %s', [$key, $value]));
+		}
+		
+		$newset->photos = $set['photos'];
+		
+		$newset->save();
+	    }
+	    
+	}
+    }
+    
     private function findFile($id) {
         if ($folders = scandir($this->getWorkingDirectory())) {
             foreach ($folders as $file) {
@@ -223,6 +267,9 @@ class Importer {
             // Import media
 	    $this->importMedia();
            
+	    // Import albums / Photosets
+	    $this->importAlbums();
+	    
             
         } catch (\Exception $ex) {
             \Idno\Core\Idno::site()->logging()->error($ex->getMessage());
