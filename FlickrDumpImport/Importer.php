@@ -109,7 +109,10 @@ class Importer {
 		}
 		
 		$newset->photos = $set['photos'];
-		
+		if (preg_match('/\/([0-9+])\//'. $set['cover_photo'], $matches)) {
+		    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Setting primary photo as %s', [$matches[1]]));
+		    $newset->primary_photo_id = $matches[1];
+		}
 		$newset->save();
 	    }
 	    
