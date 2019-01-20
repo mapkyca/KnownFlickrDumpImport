@@ -23,6 +23,10 @@ You need the following things to get this going:
 ```
 ./known.php import-flickr USERNAME /path/to/flickr/data/
 ```
+## Todo
+
+* [ ] Support permissions 
+* [ ] Store additional metadata from Flickr import
 
 ## Troubleshooting
 
