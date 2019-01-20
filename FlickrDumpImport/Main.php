@@ -14,6 +14,8 @@ namespace ConsolePlugins\FlickrDumpImport {
                 throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Could not find user %s', [$username]));
             
             $importer = new Importer($user, $directory);
+	    
+	    $importer->doImport();
         }
 
         public function getCommand() {
