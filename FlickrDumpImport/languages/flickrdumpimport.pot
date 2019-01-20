@@ -1,0 +1,124 @@
+#: ./Importer.php:26
+msgid "The passed user is not a valid user."
+msgstr ""
+
+#: ./Importer.php:29
+msgid "Directory %s is not a valid or readable directory"
+msgstr ""
+
+#: ./Importer.php:35
+msgid "FlickrDumpImport requires the Photo plugin, this does not appear to be installed or activated."
+msgstr ""
+
+#: ./Importer.php:38
+msgid "FlickrDumpImport requires the Media plugin, this does not appear to be installed or activated."
+msgstr ""
+
+#: ./Importer.php:41
+msgid "FlickrDumpImport requires the VideoTranscode plugin, this does not appear to be installed or activated."
+msgstr ""
+
+#: ./Importer.php:58
+msgid "Decompressing %s ... "
+msgstr ""
+
+#: ./Importer.php:65
+msgid "There was a problem decompressing %s"
+msgstr ""
+
+#: ./Importer.php:84
+msgid "Existing photoset %s - %s, updating..."
+msgstr ""
+
+#: ./Importer.php:88
+msgid "Importing new photoset %s - %s, updating..."
+msgstr ""
+
+#: ./Importer.php:108
+msgid "%s => %s"
+msgstr ""
+
+#: ./Importer.php:113
+msgid "Setting primary photo as %s"
+msgstr ""
+
+#: ./Importer.php:149
+msgid "Importing media %d from %s..."
+msgstr ""
+
+#: ./Importer.php:166
+msgid "\tImporting %s as a photo"
+msgstr ""
+
+#: ./Importer.php:183
+msgid "Photo has already been imported, so amending values"
+msgstr ""
+
+#: ./Importer.php:192
+msgid "\tImporting %s as a video"
+msgstr ""
+
+#: ./Importer.php:207
+msgid "Video has already been imported, so amending values"
+msgstr ""
+
+#: ./Importer.php:213
+msgid "Extension %s is not supported for %s"
+msgstr ""
+
+#: ./Importer.php:225
+msgid "\tSetting title as %s"
+msgstr ""
+
+#: ./Importer.php:228
+msgid "\tSetting body as %s"
+msgstr ""
+
+#: ./Importer.php:231
+msgid "\tSetting created time to %s"
+msgstr ""
+
+#: ./Importer.php:235
+msgid "\tSetting lat/long as %s/%s"
+msgstr ""
+
+#: ./Importer.php:241
+msgid "\tPhoto page saved as %s"
+msgstr ""
+
+#: ./Importer.php:247
+msgid "Photo saved as %s"
+msgstr ""
+
+#: ./Importer.php:249
+msgid "No media item could be created for %s (%s)"
+msgstr ""
+
+#: ./Importer.php:255
+msgid "Could not find a file associated with %s"
+msgstr ""
+
+#: ./Importer.php:267
+msgid "Starting import for %s on %s"
+msgstr ""
+
+#: ./Importer.php:284
+msgid "Logging %s on"
+msgstr ""
+
+#: ./Main.php:14
+msgid "Could not find user %s"
+msgstr ""
+
+#: ./Main.php:26
+msgid "Import flickr photos and videos from a Flickr export archive."
+msgstr ""
+
+#: ./Main.php:31
+msgid "The username to import flickr dump as."
+msgstr ""
+
+#: ./Main.php:32
+msgid "Directory to import files from."
+msgstr ""
+
