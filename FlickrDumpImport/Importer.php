@@ -250,6 +250,7 @@ class Importer {
 			    }
 
 			    $photo_obj = null;
+			    gc_collect_cycles(); // Try and clean up some resources.
                             
                         } else {
                             throw new \RuntimeException(\Idno\Core\Idno::site()->language()->_('Could not find a file associated with %s', [$json['id']]));
