@@ -123,7 +123,7 @@ class Importer {
         if ($folders = scandir($this->getWorkingDirectory())) {
             foreach ($folders as $file) {
                 if ($file != '.' && $file != '..') {
-                    if (strpos($file, $id) && (strpos($file, '.json')===false)) {
+                    if (strpos($file, $id)!==false && (strpos($file, '.json')===false)) {
                         return $file;
                     }
                 }
