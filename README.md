@@ -17,7 +17,7 @@ You need the following things to get this going:
 ## Installation
 
 * Drop FlickrDumpImport folder into the ConsolePlugins folder of your idno installation.
-* Download your flickr data and save it in a directory somewhere (there is no need to
+* Download your flickr data and save it in a directory somewhere (there is no need to unzip them first)
 * Execute your import from the console:
 
 ```
