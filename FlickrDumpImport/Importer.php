@@ -305,11 +305,12 @@ class Importer {
 	    // Import albums / Photosets
 	    $this->importAlbums();
 	    
-            
+	    \Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('Import finished at %s', [date('r')]));
+	    
         } catch (\Exception $ex) {
             \Idno\Core\Idno::site()->logging()->error($ex->getMessage());
         }
         
-        
+	
     }
 }
