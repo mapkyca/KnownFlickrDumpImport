@@ -152,6 +152,16 @@ class Importer {
                         if ($file = $this->findFile($json['id'])) {
             
                             $ext = pathinfo($file, PATHINFO_EXTENSION);
+			    
+			    if (empty($ext)) {
+				$finfo = finfo_open(FILEINFO_MIME_TYPE);
+				$mimetype = finfo_file($finfo, $file);
+				finfo_close($finfo);
+				
+				$ext = explode('/', $ext)[1];
+				
+				\Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('File has no extension, so detecting it as %s', [$ext]));
+			    }
                             
                             switch ($ext) {
                             
