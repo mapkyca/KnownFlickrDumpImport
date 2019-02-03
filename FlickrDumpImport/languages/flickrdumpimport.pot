@@ -46,64 +46,72 @@ msgstr ""
 msgid "Importing media %d from %s..."
 msgstr ""
 
-#: ./Importer.php:166
+#: ./Importer.php:163
+msgid "File has no extension, so detecting it as %s"
+msgstr ""
+
+#: ./Importer.php:176
 msgid "\tImporting %s as a photo"
 msgstr ""
 
-#: ./Importer.php:183
+#: ./Importer.php:193
 msgid "Photo has already been imported, so amending values"
 msgstr ""
 
-#: ./Importer.php:192
+#: ./Importer.php:206
 msgid "\tImporting %s as a video"
 msgstr ""
 
-#: ./Importer.php:207
+#: ./Importer.php:221
 msgid "Video has already been imported, so amending values"
 msgstr ""
 
-#: ./Importer.php:213
+#: ./Importer.php:227
 msgid "Extension %s is not supported for %s"
 msgstr ""
 
-#: ./Importer.php:225
+#: ./Importer.php:239
 msgid "\tSetting title as %s"
 msgstr ""
 
-#: ./Importer.php:228
+#: ./Importer.php:242
 msgid "\tSetting body as %s"
 msgstr ""
 
-#: ./Importer.php:231
+#: ./Importer.php:245
 msgid "\tSetting created time to %s"
 msgstr ""
 
-#: ./Importer.php:235
+#: ./Importer.php:249
 msgid "\tSetting lat/long as %s/%s"
 msgstr ""
 
-#: ./Importer.php:241
+#: ./Importer.php:255
 msgid "\tPhoto page saved as %s"
 msgstr ""
 
-#: ./Importer.php:247
+#: ./Importer.php:261
 msgid "Photo saved as %s"
 msgstr ""
 
-#: ./Importer.php:249
+#: ./Importer.php:263
 msgid "No media item could be created for %s (%s)"
 msgstr ""
 
-#: ./Importer.php:255
+#: ./Importer.php:270
 msgid "Could not find a file associated with %s"
 msgstr ""
 
-#: ./Importer.php:267
+#: ./Importer.php:282
 msgid "Starting import for %s on %s"
 msgstr ""
 
-#: ./Importer.php:284
+#: ./Importer.php:299
 msgid "Logging %s on"
+msgstr ""
+
+#: ./Importer.php:308
+msgid "Import finished at %s"
 msgstr ""
 
 #: ./Main.php:14
