@@ -158,7 +158,7 @@ class Importer {
 				$mimetype = finfo_file($finfo, $this->getWorkingDirectory() . $file);
 				finfo_close($finfo);
 				
-				$ext = explode('/', $ext)[1];
+				$ext = explode('/', $mimetype)[1];
 				
 				\Idno\Core\Idno::site()->logging()->info(\Idno\Core\Idno::site()->language()->_('File has no extension, so detecting it as %s', [$ext]));
 			    }
