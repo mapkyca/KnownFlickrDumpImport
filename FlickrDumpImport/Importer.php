@@ -197,6 +197,8 @@ class Importer {
                                 
 				case 'avi':
 				    if (!$mime) $mime = 'video/avi';
+				
+				case 'quicktime':
 				case 'mov':
 				    if (!$mime) $mime = 'video/mov';
                                 case 'mp4' :
