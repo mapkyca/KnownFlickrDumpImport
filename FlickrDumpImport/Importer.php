@@ -155,7 +155,7 @@ class Importer {
 			    
 			    if (empty($ext)) {
 				$finfo = finfo_open(FILEINFO_MIME_TYPE);
-				$mimetype = finfo_file($finfo, $file);
+				$mimetype = finfo_file($finfo, $this->getWorkingDirectory() . $file);
 				finfo_close($finfo);
 				
 				$ext = explode('/', $ext)[1];
