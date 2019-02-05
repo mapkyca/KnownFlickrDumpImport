@@ -77,7 +77,7 @@ class Importer {
 	$json = json_decode(file_get_contents($this->getWorkingDirectory() . 'albums.json'), true);
 	if ($json) {
 	    
-	    foreach ($json as $set) {
+	    foreach ($json['albums'] as $set) {
 		
 		// Create new storage
 		if ($photoset = \Idno\Entities\GenericDataItem::getByDatatype('Flickr/Photoset', ['photoset_id' => $set['id']])) {
